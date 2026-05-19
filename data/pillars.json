@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "sense",
+    "name": "Sense",
+    "tagline": "Detect threats before they reach you",
+    "color": "#FF8F1F",
+    "icon": "radar",
+    "progress": 100
+  },
+  {
+    "slug": "harmonise",
+    "name": "Harmonise",
+    "tagline": "Move as one mind",
+    "color": "#3B82F6",
+    "icon": "users",
+    "progress": 75
+  },
+  {
+    "slug": "interpret",
+    "name": "Interpret",
+    "tagline": "See through the noise",
+    "color": "#10B981",
+    "icon": "eye",
+    "progress": 50
+  },
+  {
+    "slug": "endure",
+    "name": "Endure",
+    "tagline": "Outlast the chaos",
+    "color": "#F59E0B",
+    "icon": "shield",
+    "progress": 25
+  },
+  {
+    "slug": "lead",
+    "name": "Lead",
+    "tagline": "Steady hand. Clear voice.",
+    "color": "#8B5CF6",
+    "icon": "compass",
+    "progress": 0
+  },
+  {
+    "slug": "dominate",
+    "name": "Dominate",
+    "tagline": "Own the cognitive battlespace",
+    "color": "#EF4444",
+    "icon": "crown",
+    "progress": 0
+  }
+]

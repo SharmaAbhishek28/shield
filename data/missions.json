@@ -1,0 +1,32 @@
+[
+  {
+    "id": "m_001",
+    "title": "Spot 3 deepfakes",
+    "subtitle": "Detection drill",
+    "xp": 120,
+    "icon": "video",
+    "progress": 2,
+    "target": 3,
+    "claimed": false
+  },
+  {
+    "id": "m_002",
+    "title": "Complete a Sense part",
+    "subtitle": "Pillar push",
+    "xp": 200,
+    "icon": "radar",
+    "progress": 0,
+    "target": 1,
+    "claimed": false
+  },
+  {
+    "id": "m_003",
+    "title": "Score 90%+ on any quiz",
+    "subtitle": "Calibrate",
+    "xp": 150,
+    "icon": "target",
+    "progress": 1,
+    "target": 1,
+    "claimed": true
+  }
+]

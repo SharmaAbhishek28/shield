@@ -1,0 +1,10 @@
+[
+  { "id": "b_001", "name": "First Contact", "description": "Completed your first Part.", "icon": "flag", "unlockedAt": "2025-08-16" },
+  { "id": "b_002", "name": "Eagle Eye", "description": "Spotted 10 deepfakes in a row.", "icon": "eye", "unlockedAt": "2025-09-02" },
+  { "id": "b_003", "name": "Iron Streak", "description": "21-day training streak.", "icon": "flame", "unlockedAt": "2025-09-12" },
+  { "id": "b_004", "name": "Sharp Caller", "description": "Quiz calibration above 0.9.", "icon": "target", "unlockedAt": "2025-10-04" },
+  { "id": "b_005", "name": "Sense Master", "description": "Cleared the Sense pillar.", "icon": "radar", "unlockedAt": "2025-10-22" },
+  { "id": "b_006", "name": "Quick Draw", "description": "Sub-second deepfake call.", "icon": "zap", "unlockedAt": null },
+  { "id": "b_007", "name": "Harmoniser", "description": "Cleared the Harmonise pillar.", "icon": "users", "unlockedAt": null },
+  { "id": "b_008", "name": "Unbroken", "description": "100-day training streak.", "icon": "flame", "unlockedAt": null }
+]

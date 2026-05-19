@@ -4,9 +4,7 @@ A fully clickable, animation-rich frontend prototype of **SHIELD**, the cognitiv
 warfare training platform for the Indian Armed Forces.
 
 This repository is a **design and UX prototype** — no backend, no database, no real
-auth. Mock data lives in `/data` and is loaded into Zustand stores on boot. Every
-screen, every flow, every microinteraction is built to demonstrate exactly how the
-final product will look, feel, and behave.
+auth. Mock data lives in `/data` and is loaded into Zustand stores on boot.
 
 ## Tech Stack
 
@@ -14,7 +12,6 @@ final product will look, feel, and behave.
 | ------------- | ------------------------------------- |
 | Framework     | Next.js 14 (App Router) + TypeScript  |
 | Styling       | Tailwind CSS + locked design tokens   |
-| UI primitives | shadcn/ui (Radix-based)               |
 | Animation     | Framer Motion                         |
 | Icons         | Lucide React (no emoji, ever)         |
 | State         | Zustand (client-side)                 |
@@ -24,127 +21,87 @@ final product will look, feel, and behave.
 
 ---
 
-## Run locally (Windows / macOS / Linux)
+## Run locally
 
-Requires **Node.js 20 LTS** (or any 18.18+).
+Requires Node 20 LTS (or any 18.18+).
 
 ```bash
-# 1. Install dependencies (first time only, takes ~1–2 min)
 npm install
-
-# 2. Start the dev server
 npm run dev
 ```
 
-Then open <http://localhost:3000> in your browser. You'll land on the splash, which
-auto-redirects to `/login` after 1.5 seconds.
+Open <http://localhost:3000>. Splash → `/login` → submit → `/home`.
 
-The dev server hot-reloads on every save — keep it running while you edit files.
-
-### Other useful commands
+Other scripts:
 
 ```bash
-npm run typecheck   # TypeScript strict check (no emit)
-npm run lint        # ESLint via next lint
-npm run build       # Production build (run before deploying)
-npm run start       # Serve the production build locally on :3000
+npm run typecheck   # strict TypeScript check
+npm run lint        # eslint via next lint
+npm run build       # production build
+npm run start       # serve the production build
 ```
 
 ---
 
 ## Deploy to Vercel
 
-### Option A — One-click via the Vercel dashboard (recommended)
-
-1. **Push to GitHub.** From the project root:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: SHIELD prototype scaffold (Step 1)"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/shield-prototype.git
-   git push -u origin main
-   ```
-2. Go to <https://vercel.com/new>.
-3. **Import** your `shield-prototype` repo. Vercel auto-detects Next.js — no config
-   tweaks needed; the included `vercel.json` already specifies framework, regions
-   (`bom1` — Mumbai), and security headers.
-4. Click **Deploy**. The first build takes ~1–2 minutes.
-5. Done — you'll get a `https://shield-prototype-<hash>.vercel.app` URL. Every
-   subsequent push to `main` redeploys automatically; every PR gets a preview URL.
-
-### Option B — CLI (good for ad-hoc deploys)
+Push to GitHub, then **Import** the repo at <https://vercel.com/new>. Vercel
+auto-detects Next.js; the included `vercel.json` pins the framework, region
+(`bom1`), and adds security headers. First build ~1–2 minutes. Every push to
+`main` redeploys.
 
 ```bash
-npm i -g vercel
-vercel login
-vercel              # preview deployment
-vercel --prod       # production deployment
+git init && git add . && git commit -m "feat: SHIELD prototype"
+git branch -M main
+git remote add origin https://github.com/<you>/shield-prototype.git
+git push -u origin main
 ```
 
-### Environment variables
-
-The prototype runs entirely on the client — no env vars are required for the
-current scaffold. `.env.example` lists optional public flags (`NEXT_PUBLIC_*`) you
-can wire up in the **Vercel → Project → Settings → Environment Variables** panel
-when needed.
-
-### CI on GitHub
-
-`.github/workflows/ci.yml` runs `typecheck → lint → build` on every push and PR to
-`main`. This catches breakage before Vercel does. No secrets are required.
+CI on push/PR runs typecheck → lint → build (`.github/workflows/ci.yml`).
 
 ---
 
-## Design system
+## Routes wired so far
 
-- **Dark mode by default** — the entire app lives on `#0A0E1A`.
-- **Primary orange** (`#FF8F1F`) is reserved for CTAs, active states, and alerts.
-- **Hexagonal motif** for the six pillars: Sense, Harmonise, Interpret, Endure,
-  Lead, Dominate.
-- All cards use `rounded-2xl` (16px), 1px borders in `#2A3142`, subtle inner glows
-  rather than heavy outer shadows.
-- Type scale and colour tokens are defined in `tailwind.config.ts` and exposed as
-  CSS variables in `app/globals.css`.
+| Route          | Status                                                              |
+| -------------- | ------------------------------------------------------------------- |
+| `/`            | Splash — animated SHIELD logo, redirects to `/login` at 1.5 s       |
+| `/login`       | Real login — Service ID + password (eye toggle) + lang toggle + CTA |
+| `/onboarding`  | Lightweight placeholder (full carousel = Step 4)                    |
+| `/home`        | **Real dashboard** — see below                                      |
+| `/learn`       | 6-pillar hex grid                                                   |
+| `/train`       | Training hub — Deepfake, Scenarios, Quizzes                         |
+| `/profile`     | Hero card, stats grid, badges grid                                  |
+| `/more`        | Navigation hub for Leaderboard, Settings, FAQ, Feedback, Admin      |
+| `*` (404)      | Branded "Out of position" page                                      |
 
-## Project structure
+### `/home` — Dashboard contents
 
-```
-app/                   Next.js App Router routes
-components/
-  ui/                  shadcn primitives (Button, Card, Dialog, …)
-  shield/              SHIELD-specific components (HexCard, XPBar, …)
-  illustrations/       Custom SVGs
-data/                  Mock JSON (user, pillars, parts, badges, …)
-lib/
-  stores/              Zustand stores
-  animations.ts        Reusable Framer Motion variants
-  utils.ts             cn() and helpers
-public/                Static assets (videos, images)
-```
+- TopBar: time-aware greeting + notification bell with red dot
+- StreakCard: 23-day streak, flickering flame icon, shimmer aura
+- XPLevelCard: Level 8 badge, XP count animating 4000 → 4250 on mount,
+  animated bar fill, "to LVL 9" remainder
+- ContinueLearningCard: hero card with thumbnail, pulsing play badge, progress bar
+- Today's Missions: 3 horizontal-scroll cards with progress bars + claim states
+- Your Pillars: 6 hexagonal pillar tiles with SVG progress rings, animated
+  stroke-dashoffset, tilt on hover, % chip
+- Recent Badges: hex-clipped badge icons, locked badges desaturated
+- UnitRankingCard: #7 in 2 PARA SF + animated sparkline of rank trend
+- BottomTabBar: 5 tabs (Home / Learn / Train / Profile / More), animated
+  active-tab indicator using `layoutId`
+
+All cards stagger-fade-and-slide-up on mount (50 ms apart).
+
+---
 
 ## Status
 
 **Step 1 — Setup ✅**
+**Step 2 — Component library ✅** (HexCard via PillarHex, XPBar via XPLevelCard,
+StreakFlame via StreakCard, BottomTabBar, TopBar, BadgeIcon)
+**Step 5 — Home dashboard ✅** (brought forward to unblock Vercel deploy)
 
-- Next.js 14 + TypeScript scaffolded (Next pinned to `14.2.35`, the latest patched 14.x)
-- Tailwind config with full SHIELD palette and type scale
-- Urbanist loaded globally via `next/font`
-- Dark theme applied at the root
-- TypeScript strict typecheck passes clean
-- Tailwind compiles clean (verified in sandbox)
-- `vercel.json` + GitHub Actions CI in place — Vercel-ready
-
-**Routes wired so far**
-
-| Route          | What it is                                                |
-| -------------- | --------------------------------------------------------- |
-| `/`            | Splash with logo-draw animation, redirects to `/login`    |
-| `/login`       | Full login screen — Service ID + password + lang toggle   |
-| `/onboarding`  | Placeholder (full carousel comes in Step 4)               |
-| `/home`        | Placeholder (full dashboard comes in Step 5)              |
-| `*` (404)      | Branded "Out of position" page                            |
-
-Next: **Step 2 — Design-system component library** (`HexCard`, `XPBar`,
-`StreakFlame`, `BottomTabBar`, `TopBar`, `BadgeIcon`) on an isolated
-`/components-demo` route.
+Next up:
+- Step 4 — full onboarding carousel
+- Step 6 — pillar detail + part content
+- Step 8 — deepfake module (signature feature)
