@@ -1,0 +1,38 @@
+{
+  "sense": [
+    { "id": "p_s1", "order": 1, "title": "Threat Vectors 101", "description": "Map the modern cognitive attack surface.", "durationMins": 9, "status": "completed", "contentTypes": ["video","text","quiz"] },
+    { "id": "p_s2", "order": 2, "title": "Signal vs Noise", "description": "Filtering technique under information overload.", "durationMins": 11, "status": "completed", "contentTypes": ["video","text"] },
+    { "id": "p_s3", "order": 3, "title": "Source Hygiene", "description": "Provenance, chain-of-trust, propagation paths.", "durationMins": 14, "status": "completed", "contentTypes": ["video","quiz"] },
+    { "id": "p_s4", "order": 4, "title": "Sense Capstone", "description": "Live drill: spot 8 threats in a feed.", "durationMins": 18, "status": "completed", "contentTypes": ["interactive","quiz"] }
+  ],
+  "harmonise": [
+    { "id": "p_h1", "order": 1, "title": "Shared Operating Picture", "description": "Sync mental models across the squad.", "durationMins": 10, "status": "completed", "contentTypes": ["video","text"] },
+    { "id": "p_h2", "order": 2, "title": "Comms Discipline", "description": "Brevity codes, intent-first phrasing.", "durationMins": 12, "status": "completed", "contentTypes": ["video","quiz"] },
+    { "id": "p_h3", "order": 3, "title": "Conflict & Friction", "description": "Resolving disagreements at speed.", "durationMins": 12, "status": "in-progress", "contentTypes": ["video","text","quiz"] },
+    { "id": "p_h4", "order": 4, "title": "Harmonise Capstone", "description": "Team drill scenario.", "durationMins": 20, "status": "locked", "contentTypes": ["interactive"] }
+  ],
+  "interpret": [
+    { "id": "p_i1", "order": 1, "title": "Pattern Reading", "description": "What the noise is hiding.", "durationMins": 10, "status": "completed", "contentTypes": ["video","text"] },
+    { "id": "p_i2", "order": 2, "title": "Cognitive Biases", "description": "Your worst enemy is your own brain.", "durationMins": 14, "status": "completed", "contentTypes": ["video","quiz"] },
+    { "id": "p_i3", "order": 3, "title": "Synthesis", "description": "From data points to courses of action.", "durationMins": 16, "status": "available", "contentTypes": ["video","text","quiz"] },
+    { "id": "p_i4", "order": 4, "title": "Interpret Capstone", "description": "Live decode of an adversary campaign.", "durationMins": 22, "status": "locked", "contentTypes": ["interactive","quiz"] }
+  ],
+  "endure": [
+    { "id": "p_e1", "order": 1, "title": "Fatigue & Decision-Making", "description": "How tired minds choose badly.", "durationMins": 12, "status": "completed", "contentTypes": ["video","text"] },
+    { "id": "p_e2", "order": 2, "title": "Stress Inoculation", "description": "Building cognitive armour.", "durationMins": 16, "status": "available", "contentTypes": ["video","quiz"] },
+    { "id": "p_e3", "order": 3, "title": "Operational Tempo", "description": "Surge, sustain, recover.", "durationMins": 14, "status": "locked", "contentTypes": ["video","text"] },
+    { "id": "p_e4", "order": 4, "title": "Endure Capstone", "description": "72-hour simulation.", "durationMins": 28, "status": "locked", "contentTypes": ["interactive"] }
+  ],
+  "lead": [
+    { "id": "p_l1", "order": 1, "title": "Commander's Intent", "description": "Clarity beats cleverness.", "durationMins": 11, "status": "locked", "contentTypes": ["video","text"] },
+    { "id": "p_l2", "order": 2, "title": "Decision Under Doubt", "description": "Lead with incomplete info.", "durationMins": 14, "status": "locked", "contentTypes": ["video","quiz"] },
+    { "id": "p_l3", "order": 3, "title": "Voice & Presence", "description": "How command sounds.", "durationMins": 12, "status": "locked", "contentTypes": ["video"] },
+    { "id": "p_l4", "order": 4, "title": "Lead Capstone", "description": "Take command of a scenario.", "durationMins": 24, "status": "locked", "contentTypes": ["interactive"] }
+  ],
+  "dominate": [
+    { "id": "p_d1", "order": 1, "title": "Offensive Cognition", "description": "Shaping the adversary's perception.", "durationMins": 14, "status": "locked", "contentTypes": ["video","text"] },
+    { "id": "p_d2", "order": 2, "title": "Influence Operations", "description": "Ethics, targets, levers.", "durationMins": 16, "status": "locked", "contentTypes": ["video","quiz"] },
+    { "id": "p_d3", "order": 3, "title": "Information Warfare", "description": "Cross-domain orchestration.", "durationMins": 18, "status": "locked", "contentTypes": ["video","text"] },
+    { "id": "p_d4", "order": 4, "title": "Dominate Capstone", "description": "Final exam.", "durationMins": 30, "status": "locked", "contentTypes": ["interactive","quiz"] }
+  ]
+}

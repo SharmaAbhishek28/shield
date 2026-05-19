@@ -1,107 +1,66 @@
 # SHIELD — Frontend Design Prototype
 
-A fully clickable, animation-rich frontend prototype of **SHIELD**, the cognitive
-warfare training platform for the Indian Armed Forces.
+Fully clickable Next.js 14 prototype of **SHIELD**, the cognitive warfare training platform.
+No backend, no auth, no DB — all state lives in Zustand stores seeded from JSON in `/data`.
 
-This repository is a **design and UX prototype** — no backend, no database, no real
-auth. Mock data lives in `/data` and is loaded into Zustand stores on boot.
-
-## Tech Stack
-
-| Layer         | Choice                                |
-| ------------- | ------------------------------------- |
-| Framework     | Next.js 14 (App Router) + TypeScript  |
-| Styling       | Tailwind CSS + locked design tokens   |
-| Animation     | Framer Motion                         |
-| Icons         | Lucide React (no emoji, ever)         |
-| State         | Zustand (client-side)                 |
-| Forms         | react-hook-form + zod                 |
-| Charts        | recharts                              |
-| Typography    | Urbanist via `next/font/google`       |
-
----
-
-## Run locally
-
-Requires Node 20 LTS (or any 18.18+).
+## Quickstart
 
 ```bash
 npm install
-npm run dev
+npm run dev          # http://localhost:3000
 ```
-
-Open <http://localhost:3000>. Splash → `/login` → submit → `/home`.
-
-Other scripts:
-
-```bash
-npm run typecheck   # strict TypeScript check
-npm run lint        # eslint via next lint
-npm run build       # production build
-npm run start       # serve the production build
-```
-
----
 
 ## Deploy to Vercel
 
-Push to GitHub, then **Import** the repo at <https://vercel.com/new>. Vercel
-auto-detects Next.js; the included `vercel.json` pins the framework, region
-(`bom1`), and adds security headers. First build ~1–2 minutes. Every push to
-`main` redeploys.
-
 ```bash
-git init && git add . && git commit -m "feat: SHIELD prototype"
-git branch -M main
-git remote add origin https://github.com/<you>/shield-prototype.git
-git push -u origin main
+git add . && git commit -m "feat: SHIELD prototype" && git push
 ```
 
-CI on push/PR runs typecheck → lint → build (`.github/workflows/ci.yml`).
+Then **Import** the repo at <https://vercel.com/new>. `vercel.json` pins framework, region (`bom1`), and security headers. CI in `.github/workflows/ci.yml` runs typecheck → lint → build.
 
----
+## Routes (26 wired, every link reachable)
 
-## Routes wired so far
+### Auth & onboarding
+- `/` — splash with animated logo, redirects to `/login`
+- `/login` — Service ID + password + lang toggle + animated submit
+- `/onboarding` — placeholder (full carousel = Step 4)
 
-| Route          | Status                                                              |
-| -------------- | ------------------------------------------------------------------- |
-| `/`            | Splash — animated SHIELD logo, redirects to `/login` at 1.5 s       |
-| `/login`       | Real login — Service ID + password (eye toggle) + lang toggle + CTA |
-| `/onboarding`  | Lightweight placeholder (full carousel = Step 4)                    |
-| `/home`        | **Real dashboard** — see below                                      |
-| `/learn`       | 6-pillar hex grid                                                   |
-| `/train`       | Training hub — Deepfake, Scenarios, Quizzes                         |
-| `/profile`     | Hero card, stats grid, badges grid                                  |
-| `/more`        | Navigation hub for Leaderboard, Settings, FAQ, Feedback, Admin      |
-| `*` (404)      | Branded "Out of position" page                                      |
+### Main app (bottom tab bar)
+- `/home` — dashboard: streak flame, animated XP count, Continue Learning hero, missions rail, hex pillar rail, badges rail, unit ranking with sparkline
+- `/learn` — 6-pillar hex grid
+- `/learn/[pillar]` — pillar hero, progress, Parts timeline with state indicators, pillar quiz CTA
+- `/learn/[pillar]/[part]` — video block (scrub-to-progress), text + callout, knowledge check, Mark Complete with XP celebration overlay
+- `/train` — training hub (Deepfake / Scenarios / Quiz)
+- `/train/deepfake` — challenge list with difficulty pills
+- `/train/deepfake/[id]` — **Spot-the-Fake (signature)**: two video tiles, confidence slider, reveal animation with shake on the fake, tells breakdown panel
+- `/train/scenarios` — 12-scenario grid
+- `/train/quiz` — quiz selector (Sense diagnostic + 6 pillar quizzes, locked until pillar complete)
+- `/train/quiz/[id]` — question screen: MCQ + True/False, animated progress dots, confidence per question, sliding question transitions, instant explanation reveal
+- `/train/quiz/[id]/results` — animated score count-up, confetti for ≥80%, stats grid (accuracy / avg time / calibration), retake / back CTAs
+- `/profile` — hero, stats grid, badges grid
+- `/profile/badges` — full badges grid, locked desaturated
+- `/profile/certificates` — earned certificates with download
+- `/more` — leaderboard / settings / faq / feedback / admin
 
-### `/home` — Dashboard contents
+### Support & admin
+- `/leaderboard` — scope tabs + period filters + animated 3-podium + ranked list with current user pinned
+- `/settings` — account, preferences, training, privacy, about, logout with confirmation modal
+- `/faq` — search + category tabs + accordion
+- `/feedback` — categorised form with success animation
+- `/admin` — 4 stat cards, trendline chart, recent activity, content/user shortcuts
+- `/admin/content` — sidebar pillar picker, parts list with status badges
+- `/admin/users` — search + role filter + responsive table
+- `/admin/analytics` — pillar completion funnel
+- `*` — branded 404 "Out of position"
 
-- TopBar: time-aware greeting + notification bell with red dot
-- StreakCard: 23-day streak, flickering flame icon, shimmer aura
-- XPLevelCard: Level 8 badge, XP count animating 4000 → 4250 on mount,
-  animated bar fill, "to LVL 9" remainder
-- ContinueLearningCard: hero card with thumbnail, pulsing play badge, progress bar
-- Today's Missions: 3 horizontal-scroll cards with progress bars + claim states
-- Your Pillars: 6 hexagonal pillar tiles with SVG progress rings, animated
-  stroke-dashoffset, tilt on hover, % chip
-- Recent Badges: hex-clipped badge icons, locked badges desaturated
-- UnitRankingCard: #7 in 2 PARA SF + animated sparkline of rank trend
-- BottomTabBar: 5 tabs (Home / Learn / Train / Profile / More), animated
-  active-tab indicator using `layoutId`
+## Design system (locked)
+- Dark mode only, `#0A0E1A` base, primary orange `#FF8F1F` reserved for CTAs/active/alerts
+- Hexagonal motif for the six pillars (SVG progress rings, hex clip-path)
+- All cards `rounded-2xl`, 1px borders, inner glows instead of heavy shadows
+- Urbanist via `next/font/google` — weights 400–900
+- Animations: Framer Motion, cubic-bezier `[0.22, 1, 0.36, 1]`, 50 ms stagger on lists
 
-All cards stagger-fade-and-slide-up on mount (50 ms apart).
-
----
-
-## Status
-
-**Step 1 — Setup ✅**
-**Step 2 — Component library ✅** (HexCard via PillarHex, XPBar via XPLevelCard,
-StreakFlame via StreakCard, BottomTabBar, TopBar, BadgeIcon)
-**Step 5 — Home dashboard ✅** (brought forward to unblock Vercel deploy)
-
-Next up:
-- Step 4 — full onboarding carousel
-- Step 6 — pillar detail + part content
-- Step 8 — deepfake module (signature feature)
+## Verified
+- TypeScript strict typecheck — **clean across 26 routes**
+- Tailwind compiles clean (sandbox-verified)
+- npm install + Vercel-ready config in place

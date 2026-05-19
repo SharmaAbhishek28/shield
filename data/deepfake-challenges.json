@@ -1,0 +1,7 @@
+[
+  { "id":"d_001","title":"Briefing Room","format":"compare","difficulty":"Cadet","durationSecs":42,"reward":120 },
+  { "id":"d_002","title":"Press Conference","format":"compare","difficulty":"Specialist","durationSecs":58,"reward":180 },
+  { "id":"d_003","title":"Frame-by-Frame: Address","format":"frame","difficulty":"Specialist","durationSecs":74,"reward":220 },
+  { "id":"d_004","title":"Realtime: Town Hall","format":"realtime","difficulty":"Advanced","durationSecs":96,"reward":280 },
+  { "id":"d_005","title":"Realtime: HQ Briefing","format":"realtime","difficulty":"Elite","durationSecs":120,"reward":340 }
+]

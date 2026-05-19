@@ -1,12 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Bell } from "lucide-react";
 import { useUser } from "@/lib/stores/useUser";
 import { cn } from "@/lib/utils";
 
-function greeting() {
-  const h = new Date().getHours();
+function pickGreeting(h: number) {
   if (h < 12) return "Good morning";
   if (h < 17) return "Good afternoon";
   return "Good evening";
@@ -14,6 +14,12 @@ function greeting() {
 
 export function TopBar({ className }: { className?: string }) {
   const { rank, fullName } = useUser();
+  // Compute time-aware greeting on mount only to avoid SSR/CSR hydration mismatch.
+  const [greeting, setGreeting] = useState("Welcome back");
+  useEffect(() => {
+    setGreeting(pickGreeting(new Date().getHours()));
+  }, []);
+
   return (
     <header
       className={cn(
@@ -23,7 +29,7 @@ export function TopBar({ className }: { className?: string }) {
       )}
     >
       <div className="min-w-0">
-        <p className="text-small text-text-secondary">{greeting()},</p>
+        <p className="text-small text-text-secondary">{greeting},</p>
         <h1 className="truncate text-h3 font-bold text-text-primary">
           {rank} {fullName}
         </h1>

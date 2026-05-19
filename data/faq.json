@@ -1,0 +1,9 @@
+[
+  { "category":"Account","q":"How do I reset my password?","a":"Use the Forgot Password link on the sign-in screen and follow the prompts. Reset links expire in 15 minutes." },
+  { "category":"Account","q":"Can I change my Service ID?","a":"No. Service IDs are immutable and tied to your record. Contact your unit admin for corrections." },
+  { "category":"Training","q":"Do streaks reset on weekends?","a":"No. Streaks count any day with at least 5 minutes of activity. Use a Streak Freeze if you miss a day." },
+  { "category":"Training","q":"How is XP calculated?","a":"XP is earned for completing Parts, scoring above 70% on quizzes, and finishing daily missions. Calibration bonuses apply on high-confidence correct answers." },
+  { "category":"Technical","q":"Why is my video buffering?","a":"Enable Low-Bandwidth Mode in Settings → Training. SHIELD will pre-cache content overnight." },
+  { "category":"Security","q":"Is content watermarked?","a":"Yes. Every video carries your Service ID and a timestamp watermark." },
+  { "category":"Security","q":"Can I take screenshots?","a":"Screenshots are device-level. Sensitive content is flagged in red and is monitored." }
+]

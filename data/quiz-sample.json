@@ -1,0 +1,17 @@
+{
+  "id":"q_sense_01",
+  "pillar":"sense",
+  "title":"Sense — Diagnostic Quiz",
+  "questions":[
+    { "id":"q1","type":"mcq","prompt":"Which of these is the most reliable single signal that a video has been manipulated?","options":["Background noise","Lip-sync drift","Color cast","Compression artifacts"],"correct":1,"explanation":"Lip-sync drift exposes timing-based generative errors that color casts and compression don't." },
+    { "id":"q2","type":"tf","prompt":"A source's track record matters more than the platform it appears on.","correct":0,"explanation":"True. Provenance trumps platform credibility every time." },
+    { "id":"q3","type":"mcq","prompt":"In an information overload scenario, what should you do first?","options":["Ingest everything","Filter for provenance","Forward to command","Trust prior models"],"correct":1,"explanation":"Provenance filtering reduces input before reasoning kicks in." },
+    { "id":"q4","type":"mcq","prompt":"A claim is plausible but unverified. The right call is:","options":["Discard","Forward","Tag as unverified","Act on it"],"correct":2,"explanation":"Tag and continue gathering — discarding leaks signal, acting on unverified is reckless." },
+    { "id":"q5","type":"tf","prompt":"Cognitive load reduces detection accuracy.","correct":0,"explanation":"Multiple studies show 30–50% degradation under sustained load." },
+    { "id":"q6","type":"mcq","prompt":"Best primary tell for a synthetic voice?","options":["Pitch variance","Sibilance","Breath cadence","Loudness"],"correct":2,"explanation":"Breath cadence is the hardest cue for current models to forge." },
+    { "id":"q7","type":"mcq","prompt":"Edge artifacts around the jawline most likely indicate:","options":["Compression","Face-swap","Lighting","Lens distortion"],"correct":1,"explanation":"Face-swap pipelines often leak around the jaw and ear boundary." },
+    { "id":"q8","type":"tf","prompt":"Confidence calibration is independent of accuracy.","correct":1,"explanation":"False. Calibration measures whether your stated confidence matches actual accuracy — they're directly coupled." },
+    { "id":"q9","type":"mcq","prompt":"Adversary's preferred propagation path is:","options":["Top-down","Bottom-up","Peer-to-peer","Direct"],"correct":2,"explanation":"P2P propagation moves fastest and is hardest to interrupt." },
+    { "id":"q10","type":"mcq","prompt":"Pre-flight check before acting on an unverified claim:","options":["Source","Stakes","Reversibility","All of the above"],"correct":3,"explanation":"All three gates apply — provenance, consequence magnitude, and ability to undo." }
+  ]
+}
