@@ -131,10 +131,19 @@ public/                Static assets (videos, images)
 - Tailwind config with full SHIELD palette and type scale
 - Urbanist loaded globally via `next/font`
 - Dark theme applied at the root
-- Splash route (`/`) implemented with logo-draw animation as a smoke test
 - TypeScript strict typecheck passes clean
 - Tailwind compiles clean (verified in sandbox)
 - `vercel.json` + GitHub Actions CI in place — Vercel-ready
+
+**Routes wired so far**
+
+| Route          | What it is                                                |
+| -------------- | --------------------------------------------------------- |
+| `/`            | Splash with logo-draw animation, redirects to `/login`    |
+| `/login`       | Full login screen — Service ID + password + lang toggle   |
+| `/onboarding`  | Placeholder (full carousel comes in Step 4)               |
+| `/home`        | Placeholder (full dashboard comes in Step 5)              |
+| `*` (404)      | Branded "Out of position" page                            |
 
 Next: **Step 2 — Design-system component library** (`HexCard`, `XPBar`,
 `StreakFlame`, `BottomTabBar`, `TopBar`, `BadgeIcon`) on an isolated
